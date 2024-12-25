@@ -1,45 +1,35 @@
-import React from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="bg-gray-50 border-b border-gray-200">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
-        {/* Logo Section */}
-        <div className="flex items-center">
+    <div className="w-full bg-[#F0F2F3] pt-[20px] pb-[20px] h-[84px]">
+      <div className="max-w-screen-xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center space-x-3">
           <Image
-            src="/sofa.png" // Path to your logo image
+            src="/sofa.png"
             alt="Comforty Logo"
-            width={40} // Adjusted to match a typical logo size
-            height={40} // Adjusted to match a typical logo size
-            className="object-contain" // Ensure image retains aspect ratio
+            width={40}
+            height={23.34}
+            className="ml-3"
           />
-          <span className="ml-3 text-xl font-bold text-gray-800">Comforty</span>
+          <h2 className="text-[26px] font-medium">Comforty</h2>
         </div>
-
-        {/* Cart Section */}
-        <div className="flex items-center">
-          <button className="relative flex items-center space-x-2 bg-white text-gray-800 px-4 py-2 rounded-lg shadow hover:shadow-lg transition duration-200">
-            <Image
-              src="/sofa.png" // Replace with the path to your cart icon image
-              alt="Cart Icon"
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-            <span className="font-medium">Cart</span>
-            {/* Cart Item Count */}
-            <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              4
-            </span>
+        <Link href="/cart">
+          <button className="flex items-center space-x-2 bg-white py-2 px-4 rounded-md mr-3">
+            <FaShoppingCart className="text-xl" />
+            <span className="hidden sm:inline">Cart</span>
+            <div className="flex items-center justify-center w-6 h-6 bg-[#007580] text-white text-sm rounded-full">
+              2
+            </div>
           </button>
-        </div>
+        </Link>
       </div>
-    </header>
+    </div>
   );
 };
 
 export default Header;
-
 
 

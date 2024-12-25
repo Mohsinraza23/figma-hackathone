@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 
 const LogoSection = () => {
@@ -13,19 +12,18 @@ const LogoSection = () => {
   ];
 
   return (
-    <section className="bg-white py-8">
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-8 px-4">
+    <section className="bg-white flex justify-center items-center py-8">
+      <div
+        className="w-[1321px] h-[139px] mx-auto flex items-center justify-between space-x-4"
+      >
         {logos.map((logo, index) => (
-          <div
-            key={index}
-            className="flex justify-center transform transition-transform duration-200 hover:scale-110"
-          >
+          <div key={index} className="flex justify-center">
             <Image
               src={logo.src}
               alt={logo.alt}
               width={logo.width}
               height={logo.height}
-              className="object-contain w-20 h-auto md:w-24 lg:w-28" // Responsive width
+              className="object-contain"
             />
           </div>
         ))}
@@ -35,5 +33,9 @@ const LogoSection = () => {
 };
 
 export default LogoSection;
+
+
+
+
 
 

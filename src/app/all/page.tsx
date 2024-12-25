@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function AllProducts() {
   const products = [
@@ -13,7 +13,7 @@ export default function AllProducts() {
       id: 2,
       name: "Luxury Stool Chair",
       price: 20,
-      image: "/chair1.png",
+      image: "/Image.png",
       isSale: true,
     },
     {
@@ -33,6 +33,7 @@ export default function AllProducts() {
       name: "Luxury Stool Chair",
       price: 30,
       image: "/chair6.png",
+      isNew: true,
     },
     {
       id: 6,
@@ -64,7 +65,7 @@ export default function AllProducts() {
       id: 10,
       name: "Luxury Stool Chair",
       price: 20,
-      image: "/chair1.png",
+      image: "/Image.png",
       isSale: true,
     },
     {
@@ -84,55 +85,27 @@ export default function AllProducts() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-blue-500 rounded-lg"></div>
-              <span className="text-xl font-semibold">Comforty</span>
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-sm hover:text-blue-500">Home</a>
-              <a href="#" className="text-sm hover:text-blue-500">Shop</a>
-              <a href="#" className="text-sm hover:text-blue-500">Product</a>
-              <a href="#" className="text-sm hover:text-blue-500">Pages</a>
-              <a href="#" className="text-sm hover:text-blue-500">About</a>
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:block">
-                <div className="text-xs text-gray-500">Contact</div>
-                <div className="text-sm font-medium">(808) 555-0111</div>
-              </div>
-              <button className="relative p-2">
-                <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-blue-500 text-xs text-white flex items-center justify-center">0</span>
-                <Image
-                  src="/chair.png"
-                  alt="Shopping Cart"
-                  width={24}
-                  height={24}
-                />
-              </button>
-            </div>
-          </div>
-        </div>
+      <header className="text-center py-8">
+        <h1 className="text-3xl font-bold">Explore Our Product Collection</h1>
+        <p className="text-gray-600 mt-2">Discover premium furniture at affordable prices</p>
       </header>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-semibold mb-6">All Products</h2>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
-            <div key={product.id} className="group relative">
-              <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
+            <div
+              key={product.id}
+              className="group relative bg-white shadow-md rounded-lg hover:shadow-xl transition-all"
+            >
+              <div className="aspect-square overflow-hidden rounded-t-lg bg-gray-100">
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={300}
-                  height={300}
-                  className="h-full w-full object-cover object-center"
+                  width={312}
+                  height={312}
+                  className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 {product.isNew && (
                   <div className="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded">
@@ -140,20 +113,20 @@ export default function AllProducts() {
                   </div>
                 )}
                 {product.isSale && (
-                  <div className="absolute top-2 left-2 bg-orange-500 text-white px-2 py-1 text-xs rounded">
+                  <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 text-xs rounded">
                     Sale
                   </div>
                 )}
                 <button className="absolute bottom-4 right-4 bg-white rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
                   <Image
-                    src="/chair.png"
+                    src="/cart.png"
                     alt="Add to Cart"
                     width={20}
                     height={20}
                   />
                 </button>
               </div>
-              <div className="mt-4">
+              <div className="p-4">
                 <h3 className="text-sm font-medium text-gray-900">{product.name}</h3>
                 <p className="mt-1 text-sm text-gray-500">${product.price}</p>
               </div>
@@ -161,7 +134,56 @@ export default function AllProducts() {
           ))}
         </div>
       </main>
+
+      {/* Newsletter and Instagram Section */}
+      <NewsletterAndInstagram />
     </div>
   );
 }
 
+function NewsletterAndInstagram() {
+  return (
+    <div className="w-full mx-auto px-4 py-20 space-y-16 bg-[#F0F2F3]">
+      {/* Newsletter Section */}
+      <section className="text-center max-w-2xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8">
+          Or Subscribe To The Newsletter
+        </h2>
+        <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+          <input
+            type="email"
+            placeholder="Email Address..."
+            className="flex-1 px-4 py-2 border-b border-black focus:outline-none bg-transparent"
+            required
+          />
+          <button
+            type="submit"
+            className="px-8 py-2 text-sm uppercase tracking-wider bg-black text-white hover:bg-gray-800 transition-colors"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+
+      {/* Instagram Section */}
+      <section className="text-center">
+        <h2 className="text-2xl md:text-3xl font-extrabold mb-8">
+          Follow Products And Discounts On Instagram
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {["/chair6.png", "/chair5.png", "/Image.png", "/chair2.png", "/chair8.png", "/star.png"].map(
+            (src, idx) => (
+              <div key={idx} className="aspect-square overflow-hidden rounded-lg bg-gray-100">
+                <img
+                  src={`${src}?height=200&width=200`}
+                  alt={`Instagram Image ${idx + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            )
+          )}
+        </div>
+      </section>
+    </div>
+  );
+}

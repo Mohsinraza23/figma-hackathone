@@ -1,57 +1,32 @@
-
-"use client"
-import React, { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import React from "react";
+import { FaCheck, FaExclamationCircle } from "react-icons/fa";
 
 const Topbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   return (
-    <div className="flex items-center justify-between w-full h-12 bg-blue-950 px-4 md:px-10">
-      {/* Left Section */}
-      <span className="text-white text-sm">
-        ✅ Free Shipping On All Orders Over $50
-      </span>
-
-      {/* Right Section */}
-      <div className="flex items-center gap-6">
-        {/* Language Dropdown */}
-        <select
-          className="bg-blue-950 text-white border-none text-sm cursor-pointer"
-          defaultValue="Eng"
-          aria-label="Language Selection"
-        >
-          <option value="Eng">Eng</option>
-          <option value="Esp">Esp</option>
-          <option value="Fra">Fra</option>
-        </select>
-
-        {/* Mobile Dropdown Toggle */}
-        <button
-          className="text-white md:hidden"
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-
-        {/* Mobile Dropdown Menu */}
-        {isDropdownOpen && (
-          <div className="absolute top-12 right-4 bg-blue-950 text-white p-4 rounded shadow-lg">
-            <a href="#" className="block text-sm hover:underline">FAQs</a>
-            <a href="#" className="block text-sm hover:underline">Need Help</a>
-          </div>
-        )}
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="text-white text-sm hover:underline">FAQs</a>
-          <a href="#" className="text-white text-sm hover:underline">Need Help</a>
-        </div>
+    <div className="w-full flex flex-col sm:flex-row bg-[#272343] pt-[14px] pb-[14px] items-center justify-between h-[45px] sm:h-[50px]">
+      <div className="max-w-screen-xl mx-auto container flex items-center justify-between w-full px-4">
+        <p className="text-white flex items-center space-x-2 font-normal text-center sm:text-left xs:text-left text-[10px] sm:text-[12px] xs:text-[12px]">
+          <FaCheck className="text-white" />
+          <span>Free shipping on all orders over $50</span>
+        </p>
+        <ul className="text-white flex items-center space-x-4 font-normal text-center sm:text-left xs:text-left text-[10px] sm:text-[12px] xs:text-[12px]">
+          <li className="flex items-center space-x-1 cursor-pointer">
+            <span>Eng</span>
+            <ChevronDown />
+          </li>
+          <Link href="/faq">
+            <li className="cursor-pointer">FAQs</li>
+          </Link>
+          <li className="flex items-center space-x-2 cursor-pointer">
+            <FaExclamationCircle className="text-white" />
+            <span>Need Help</span>
+          </li>
+        </ul>
       </div>
     </div>
   );
 };
 
 export default Topbar;
-

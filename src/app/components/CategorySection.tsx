@@ -1,42 +1,64 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const CategorySection = () => {
+export default function Categories() {
   const categories = [
-    { title: "Wing Chair", products: "3,584 Products", img: "/chair5.png" },
-    { title: "Wooden Chair", products: "157 Products", img: "/chair6.png" },
-    { title: "Desk Chair", products: "154 Products", img: "/chair7.png" },
+    {
+      name: "Wing Chair",
+      products: "3,584 Products",
+      image: "/chair5.png",
+      href: "/categories/wing-chair",
+    },
+    {
+      name: "Wooden Chair",
+      products: "157 Products",
+      image: "/chair6.png",
+      href: "/categories/wooden-chair",
+    },
+    {
+      name: "Desk Chair",
+      products: "154 Products",
+      image: "/chair7.png",
+      href: "/categories/desk-chair",
+    },
   ];
 
   return (
-    <div className="p-4">
-      <h2 className="text-3xl font-bold mb-8 text-center">Top Categories</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
-          >
-            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]"> 
-              {/* Responsively adjust the height for different screen sizes */}
-              <Image
-                src={category.img}
-                alt={category.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-t-lg"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800">{category.title}</h3>
-              <p className="text-gray-500 mt-2">{category.products}</p>
-            </div>
-          </div>
-        ))}
+    <section className="w-full px-4 py-12 md:px-6">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="text-3xl font-bold tracking-tight mb-8 text-center">
+          Top Categories
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((category) => (
+            <Link
+              key={category.name}
+              href={category.href}
+              className="relative block overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            >
+              {/* Image Container */}
+              <div className="relative w-full aspect-square">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  width={424}
+                  height={424}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+
+              {/* Black Overlay at Bottom */}
+              <div className="absolute bottom-0 left-0 w-full bg-black/60 p-4">
+                <h3 className="text-lg font-semibold text-white">
+                  {category.name}
+                </h3>
+                <p className="text-sm text-gray-300">{category.products}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default CategorySection;
-
+}
 
