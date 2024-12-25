@@ -1,145 +1,217 @@
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaPinterestP,
+  FaYoutube,
+  FaPaypal,
+  FaCcVisa,
+  FaCcMastercard,
+  FaCcAmex,
+} from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-        {/* Logo and Description */}
-        <div>
-          <div className="flex items-center mb-4">
-            <div className="bg-blue-500 w-8 h-8 flex items-center justify-center rounded-full text-white text-lg font-bold">
-              C
+    <footer className="bg-white border-t border-gray-200 px-4 sm:px-12 md:px-28">
+      <div className="mx-auto py-12">
+        <div className="flex flex-wrap justify-between gap-8">
+          {/* Brand Section */}
+          <div className="flex flex-col w-full md:w-[320px] items-start">
+            <div className="flex items-center gap-2">
+              <Image
+                src="/sofa.png"
+                alt="Comforty Logo"
+                width={40}
+                height={23.34}
+                className="ml-3"
+              />
+              <span className="text-[#272343] text-[26px] font-bold">
+                Comforty
+              </span>
             </div>
-            <h1 className="text-xl font-bold ml-2">Comforty</h1>
+            <p className="mt-4 text-gray-500">
+              Vivamus tristique odio sit amet velit semper, eu posuere turpis
+              interdum. Cras egestas purus.
+            </p>
+            <div className="flex justify-center gap-4 mt-4">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#007580] text-xl p-2 border-2 border-transparent rounded-full hover:border-[#007580]"
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#007580] text-xl p-2 border-2 border-transparent rounded-full hover:border-[#007580]"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#007580] text-xl p-2 border-2 border-transparent rounded-full hover:border-[#007580]"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://pinterest.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#007580] text-xl p-2 border-2 border-transparent rounded-full hover:border-[#007580]"
+              >
+                <FaPinterestP />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#007580] text-xl p-2 border-2 border-transparent rounded-full hover:border-[#007580]"
+              >
+                <FaYoutube />
+              </a>
+            </div>
           </div>
-          <p className="text-gray-600 mb-4">
-            Vivamus tristique odio sit amet velit semper, eu posuere turpis interdum. Cras egestas purus.
-          </p>
-          <div className="flex space-x-4">
-            {/* Social Icons */}
-            <a href="#" className="text-gray-500 hover:text-gray-800">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="text-gray-500 hover:text-gray-800">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="text-gray-500 hover:text-gray-800">
-              <i className="fab fa-pinterest"></i>
-            </a>
-            <a href="#" className="text-gray-500 hover:text-gray-800">
-              <i className="fab fa-youtube"></i>
-            </a>
+
+          {/* Category Section */}
+          <div className="w-full md:w-1/4 lg:w-[105px]">
+            <h4 className="text-lg font-semibold text-[#9A9CAA]">Category</h4>
+            <ul className="mt-4 text-[#272343] space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Sofa
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Armchair
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Wing Chair
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Desk Chair
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Wooden Chair
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Park Bench
+                </a>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        {/* Category Section */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Category</h3>
-          <ul className="text-gray-600 space-y-2">
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Sofa
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Armchair
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Wing Chair
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Desk Chair
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Wooden Chair
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Park Bench
-              </a>
-            </li>
-          </ul>
-        </div>
+          {/* Support Section */}
+          <div className="w-full md:w-1/4 lg:w-[156px]">
+            <h4 className="text-lg font-semibold text-[#9A9CAA]">Support</h4>
+            <ul className="mt-4 text-[#272343] space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Help & Support
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                >
+                  Help
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        {/* Support Section */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Support</h3>
-          <ul className="text-gray-600 space-y-2">
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Help & Support
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Teams & Conditions
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-800">
-                Help
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Newsletter Section */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-          <form className="space-y-4">
-            <div className="flex">
+          {/* Newsletter Section */}
+          <div className="w-full md:w-1/4 lg:w-[424px]">
+            <h4 className="text-lg font-semibold text-[#9A9CAA]">Newsletter</h4>
+            <div className="mt-4 flex gap-2">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 border border-gray-300 rounded-l px-4 py-2 focus:outline-none"
+                className="px-4 py-2 w-full border text-[#9A9CAA] border-gray-300 rounded-l-md focus:outline-none"
               />
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-r hover:bg-blue-600">
+              <button className="bg-[#029FAE] text-white px-6 py-2 rounded-md hover:bg-teal-700">
                 Subscribe
               </button>
             </div>
-            <p className="text-gray-600 text-sm">
+            <p className="mt-4 text-gray-500">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
               tincidunt erat enim.
             </p>
-          </form>
+          </div>
         </div>
-      </div>
 
-      {/* Bottom Section */}
-      <div className="bg-gray-100 py-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <p className="text-sm text-gray-500">
-            © 2021 - Blogy - Designed & Develop by Zokirsoft
+        {/* Footer Bottom */}
+        <div className="flex justify-between items-center flex-wrap text-[#9A9CAA] border-t pt-8">
+          <p>
+            © 2021 - Blogy - Designed & Developed by{" "}
+            <a href="#" className="text-[#272343] hover:underline">
+              Zakirsoft
+            </a>
           </p>
-          <div className="flex space-x-4">
-            <Image
-              src="/Group.png"
-              alt="Payment Icons"
-              width={24} // Set the width
-              height={24} // Set the height
-              className="h-6 filter invert"
-            />
+          <div className="mt-4 flex justify-center space-x-4">
+            <FaCcMastercard className="text-gray-300 hover:text-red-500 transition-transform hover:translate-y-1" size={40} />
+            <FaPaypal className="text-gray-300 hover:text-blue-500 transition-transform hover:translate-y-1" size={40} />
+            <FaCcAmex className="text-gray-300 hover:text-green-500 transition-transform hover:translate-y-1" size={40} />
+            <FaCcVisa className="text-gray-300 hover:text-blue-400 transition-transform hover:translate-y-1" size={40} />
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
 
   
   

@@ -21,7 +21,8 @@ const StyleSection = () => {
         {/* Main Content Section */}
         <div className="flex flex-col lg:flex-row gap-6 items-start">
           {/* Main Image (Yellow Chair) */}
-          <div className="flex justify-center lg:w-1/2 mb-4 lg:mb-0">
+          <div className="relative flex justify-center lg:w-1/2 mb-4 lg:mb-0 animate-float">
+            <div className="absolute inset-0 animate-light-glare pointer-events-none z-10"></div>
             <Image
               src="/chair8.png" // Yellow chair
               alt="Main Style"
@@ -33,8 +34,9 @@ const StyleSection = () => {
 
           {/* Grid of Smaller Images */}
           <div className="grid grid-cols-2 gap-6 lg:w-1/2">
-            {styles.slice(0).map((style, index) => (
-              <div key={index} className="w-full h-auto">
+            {styles.map((style, index) => (
+              <div key={index} className="relative w-full h-auto animate-float">
+                <div className="absolute inset-0 animate-light-glare pointer-events-none z-10"></div>
                 <Image
                   src={style.img}
                   alt={`Style ${index + 2}`} // Correct index usage
@@ -52,6 +54,7 @@ const StyleSection = () => {
 };
 
 export default StyleSection;
+
 
 
 

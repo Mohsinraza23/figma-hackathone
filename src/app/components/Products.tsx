@@ -1,115 +1,112 @@
-import React from "react";
-import Image from "next/image"; // Import Image from next/image
+import Image from 'next/image';
+import { ShoppingCart } from 'lucide-react';
+import { Button } from './ui/Button';
 
-// Products Array with Badge Details and Individual Image Sizes
-const products = [
+interface BadgeWrapperProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function Badge({ children, className }: BadgeWrapperProps) {
+  return (
+    <span className={`px-2 py-1 text-xs font-medium text-white rounded ${className}`}>
+      {children}
+    </span>
+  );
+}
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  isNew?: boolean;
+  isSale?: boolean;
+}
+
+const products: Product[] = [
   {
     id: 1,
-    image: "/chair2.png",
-    name: "Library Stool Chair",
-    price: "$20",
-    badge: "New",
-    badgeColor: "bg-green-500",
-    imageWidth: 300, // Custom width for this image
-    imageHeight: 400, // Custom height for this image
+    name: 'Library Stool Chair',
+    price: 20,
+    image: '/chair2.png?height=312&width=312',
+    isNew: true,
   },
   {
     id: 2,
-    image: "/chair1.png",
-    name: "Comfort Chair",
-    price: "$20",
-    oldPrice: "$30",
-    badge: "",
-    badgeColor: "",
-    imageWidth: 350,
-    imageHeight: 460,
+    name: 'Library Stool Chair',
+    price: 20,
+    originalPrice: 60,
+    image: '/Image.png?height=312&width=312',
+    isSale: true,
   },
   {
     id: 3,
-    image: "/chair3.png",
-    name: "Luxury Armchair",
-    price: "$25",
-    imageWidth: 320,
-    imageHeight: 420,
+    name: 'Library Stool Chair',
+    price: 20,
+    image: '/new.png?height=312&width=312',
   },
   {
     id: 4,
-    image: "/chair4.png",
-    name: "Elegant Office Chair",
-    price: "$22",
-    imageWidth: 310,
-    imageHeight: 430,
+    name: 'Library Stool Chair',
+    price: 20,
+    image: '/new2.png?height=312&width=312',
   },
 ];
 
-const FeaturedProducts = () => {
+export default function FeaturedProducts() {
   return (
-    <section className="bg-white py-16">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">
-          Featured Products
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="relative border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              {/* Badge */}
-              {product.badge && (
-                <span
-                  className={`absolute top-3 left-3 text-white text-xs font-semibold px-2 py-1 rounded-md ${product.badgeColor}`}
-                >
-                  {product.badge}
-                </span>
+    <section className="py-12 px-4 md:px-6 overflow-hidden relative">
+      <h2 className="text-2xl font-semibold mb-8 text-center">Featured Products</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div className="relative aspect-square">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover"
+              />
+              {product.isNew && (
+                <Badge className="absolute top-2 left-2 bg-green-500 hover:bg-green-600">
+                  New
+                </Badge>
               )}
-
-              {/* Product Image */}
-              <div className="relative w-full">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  className="object-cover w-full h-full"
-                  width={product.imageWidth}  // Custom width
-                  height={product.imageHeight} // Custom height
-                />
-              </div>
-
-              {/* Product Details */}
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 text-sm mt-2">
-                  {product.oldPrice && (
-                    <span className="line-through text-gray-400 mr-2">
-                      {product.oldPrice}
+              {product.isSale && (
+                <Badge className="absolute top-2 left-2 bg-orange-500 hover:bg-orange-600">
+                  Sales
+                </Badge>
+              )}
+            </div>
+            <div className="p-4">
+              <h3 className="text-sm font-medium text-gray-700">{product.name}</h3>
+              <div className="flex items-center justify-between mt-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-lg font-bold">${product.price}</span>
+                  {product.originalPrice && (
+                    <span className="text-sm text-gray-500 line-through">
+                      ${product.originalPrice}
                     </span>
                   )}
-                  <span className="text-gray-800 font-bold">{product.price}</span>
-                </p>
-              </div>
-
-              {/* Cart Icon (Moved to Bottom) */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                <Image
-                  src="/cart.png"
-                  alt="Cart Icon"
-                  width={24}  // Custom width for cart icon
-                  height={24} // Custom height for cart icon
-                  className="w-6 h-6 cursor-pointer"
-                />
+                </div>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  <span className="sr-only">Add to cart</span>
+                </Button>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default FeaturedProducts;
-
-
-
-
+}

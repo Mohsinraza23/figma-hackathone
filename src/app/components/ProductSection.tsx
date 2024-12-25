@@ -1,130 +1,96 @@
+import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-const ProductSection = () => {
-  const products = [
-    {
-      img: "/chair2.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: null,
-      tag: "New",
-    },
-    {
-      img: "/chair1.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: "$30",
-      tag: "Sales",
-    },
-    {
-      img: "/chair3.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: null,
-      tag: null,
-    },
-    {
-      img: "/chair4.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: null,
-      tag: null,
-    },
-    {
-      img: "/chair5.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: null,
-      tag: "New",
-    },
-    {
-      img: "/chair10.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: "$30",
-      tag: "Sales",
-    },
-    {
-      img: "/chair12.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: null,
-      tag: null,
-    },
-    {
-      img: "/chair1.png",
-      title: "Library Stool Chair",
-      price: "$20",
-      originalPrice: null,
-      tag: null,
-    },
+interface BadgeProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function Badge({ children, className }: BadgeProps) {
+  return (
+    <span className={`px-2 py-1 text-sm font-semibold rounded ${className}`}>
+      {children}
+    </span>
+  );
+}
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  isNew?: boolean;
+  isSale?: boolean;
+}
+
+export default function OurProduct() {
+  const products: Product[] = [
+    { id: 1, title: "Library Stool Chair", price: 20, image: "/chair2.png", isNew: true },
+    { id: 2, title: "Library Stool Chair", price: 20, originalPrice: 30, image: "/Image.png", isSale: true },
+    { id: 3, title: "Library Stool Chair", price: 20, image: "/chair8.png" },
+    { id: 4, title: "Library Stool Chair", price: 20, image: "/chair9.png" },
+    { id: 5, title: "Library Stool Chair", price: 20, image: "/chair5.png", isNew: true },
+    { id: 6, title: "Library Stool Chair", price: 20, originalPrice: 30, image: "/chair10.png", isSale: true },
+    { id: 7, title: "Library Stool Chair", price: 20, image: "/chair15.png" },
+    { id: 8, title: "Library Stool Chair", price: 20, image: "/chair2.png" },
   ];
 
   return (
-    <div className="p-8">
-      <h2 className="text-2xl font-bold text-center mb-8">Our Products</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
+    <div className="container mx-auto px-4 py-20">
+      <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight mb-8">
+        Our Products
+      </h1>
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {products.map((product) => (
           <div
-            key={index}
-            className="bg-white border rounded-lg shadow-md p-4 relative"
+            key={product.id}
+            className="group relative rounded-lg bg-white shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:rotate-1 hover:shadow-2xl"
           >
-            {/* Badge */}
-            {product.tag && (
-              <div
-                className={`absolute top-4 left-4 px-2 py-1 text-sm font-bold text-white rounded ${
-                  product.tag === "New" ? "bg-green-500" : "bg-red-500"
-                }`}
-              >
-                {product.tag}
-              </div>
-            )}
+            {/* Shine Effect */}
+            <div className="absolute inset-0 z-10 pointer-events-none animate-shine"></div>
 
-            {/* Product Image */}
-            <div className="relative w-full h-48">
-              <Image
-                src={product.img}
-                alt={product.title}
-                layout="fill"
-                objectFit="contain" // Use "cover" if you want the image to fill the container.
-                className="rounded-md"
-              />
+            <div className="relative aspect-square overflow-hidden rounded-lg">
+              {product.isNew && (
+                <Badge className="absolute left-3 top-3 bg-emerald-500 text-white hover:bg-emerald-600">
+                  New
+                </Badge>
+              )}
+              {product.isSale && (
+                <Badge className="absolute left-3 top-3 bg-orange-500 text-white hover:bg-orange-600">
+                  Sale
+                </Badge>
+              )}
+              <Link href={"components/productDectription/discription"}>
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  height={312}
+                  width={312}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </Link>
             </div>
 
-            {/* Product Details */}
-            <div className="mt-4 text-center">
-              <h3 className="text-lg font-semibold text-gray-800">
-                {product.title}
-              </h3>
-              <div className="flex justify-center items-center space-x-2 mt-2">
-                <span className="text-lg font-bold text-gray-800">
-                  {product.price}
-                </span>
-                {product.originalPrice && (
-                  <span className="text-sm line-through text-gray-500">
-                    {product.originalPrice}
+            <div className="mt-4 flex items-center justify-between px-4 pb-4">
+              <div>
+                <h3 className="text-sm text-[#1C1B1F]">{product.title}</h3>
+                <div className="mt-1 flex items-center gap-2">
+                  <span className="text-lg font-medium text-[#1C1B1F]">
+                    ${product.price}
                   </span>
-                )}
+                  {product.originalPrice && (
+                    <span className="text-sm text-gray-500 line-through">
+                      ${product.originalPrice}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-
-            {/* Add to Cart Button */}
-            <div className="mt-4 flex justify-center">
-              <button className="flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-5 h-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m-2.4 0h16.6M7 13L5.4 5m1.6 8L9 21m6-8l1.6 8m-5.6-8H9m6 0h2m-4 0v2"
-                  />
-                </svg>
+              <button className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="sr-only">Add to cart</span>
               </button>
             </div>
           </div>
@@ -132,7 +98,5 @@ const ProductSection = () => {
       </div>
     </div>
   );
-};
-
-export default ProductSection;
+}
 
