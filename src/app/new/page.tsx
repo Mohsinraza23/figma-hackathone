@@ -18,7 +18,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="aspect-square relative bg-gray-50 rounded-lg overflow-hidden">
             <Image
-              src="/image.png"
+              src="/Image.png"
               alt="Library Stool Chair"
               width={675}
               height={607}
