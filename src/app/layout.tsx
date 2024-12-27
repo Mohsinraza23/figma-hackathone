@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Layout from "./components/Navbar";
 import Footer from "./components/Footer";
 import Topbar from "./components/Topbar";
 import Header from "./components/Header";
@@ -36,9 +35,7 @@ export default function RootLayout({
         <Topbar />
         <Header />
         <Navbar />
-
         {children}
-
         <Footer />
       </body>
     </html>
