@@ -59,7 +59,7 @@ export default function OurProduct() {
                 </Badge>
               )}
               {product.isSale && (
-                <Badge className="absolute left-3 top-3 bg-orange-500 text-white hover:bg-orange-600">
+                <Badge className="absolute left-1 top-1 bg-orange-500 text-white hover:bg-orange-600">
                   Sale
                 </Badge>
               )}
@@ -88,7 +88,7 @@ export default function OurProduct() {
                   )}
                 </div>
               </div>
-              <button className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]">
+              <button className="rounded-full bg-slate-200 p-2 text-white ">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Add to cart</span>
               </button>

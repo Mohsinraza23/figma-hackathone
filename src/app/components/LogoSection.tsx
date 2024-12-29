@@ -7,8 +7,8 @@ const LogoSection = () => {
     { src: "/cib.png", alt: "CIB Bank Logo", width: 135, height: 139 },
     { src: "/z.png", alt: "Z Logo", width: 63, height: 65 },
     { src: "/bur.png", alt: "Burnt Toast Logo", width: 98, height: 101 },
-    { src: "/pd.png", alt: "PandaDoc Logo", width: 113, height: 115 },
-    { src: "/moz.png", alt: "Moz Logo", width: 84, height: 87 },
+    { src: "/p.png", alt: "PandaDoc Logo", width: 113, height: 115 },
+    { src: "/m.png", alt: "Moz Logo", width: 84, height: 87 },
   ];
 
   return (
